@@ -7,15 +7,17 @@
   </div>
 
   <h2>Current Location:</h2>
-  <p>city Name and country Name</p>
+  <p>{{cityName}}, {{countryName}}</p>
 
   <div class="cityCard">
-    <!-- <i class="fa-solid fa-droplet"></i>
-    <i class="fa-solid fa-cloud-rain"></i>
-    <i class="fa-solid fa-cloud-bolt"></i> 
-    <i class="fa-solid fa-cloud"></i>
-    <i class="fa-solid fa-sun"></i>
-    <i class="fa-solid fa-cloud"></i> -->
+    <i class="fa-solid fa-droplet" *ngIf="states.Drizzle"></i>
+    <i class="fa-solid fa-cloud-rain" *ngIf="states.Rain"></i>
+    <i class="fa-solid fa-cloud-bolt" *ngIf="states.Thunderstorm"></i> 
+    <i class="fa-solid fa-snowflake"  *ngIf="states.Snow"></i>
+    <i class="fa-solid fa-smog"*ngIf="states.Atmosphere"></i>
+    <i class="fa-solid fa-sun" *ngIf="states.Clear"></i>
+    <i class="fa-solid fa-cloud" *ngIf="states.Clouds"></i>
+    <p>{{dayName}}, {{hours}}:{{minutes}} {{zoneTime}}</p>
   </div>
   <p>timeZone and dateTime</p>
 
