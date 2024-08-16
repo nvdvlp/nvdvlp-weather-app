@@ -18,25 +18,32 @@
     <i class="fa-solid fa-sun" *ngIf="states.Clear"></i>
     <i class="fa-solid fa-cloud" *ngIf="states.Clouds"></i>
     <p>{{dayName}}, {{hours}}:{{minutes}} {{zoneTime}}</p>
+    <p>{{FloorDegress}} °C</p>
   </div>
-  <p>timeZone and dateTime</p>
+  <p>{{dayMonth}} {{stringMonth}}, {{year}}</p>
 
   <div class="cardParameter">
-
+    <p>humidity:</p>
+    <p>{{humidity}}</p>
   </div>
   <div class="cardParameter">
-
+    <p>Wind Speed:</p>
+    <p>{{windSpeed}}</p>
   </div>
   <div class="cardParameter">
-
+    <p>Pressure:</p>
+    <p>{{pressure}}</p>
   </div>
   <div class="cardParameter">
-
+    <p>visibility:</p>
+    <p>{{visibility}}</p>
   </div>
   <div class="cardParameter">
-
+    <p>sea level:</p>
+    <p>{{seaLevel}}</p>
   </div>
-  <div class="cardParameter">
-
+  <div class="cardParameter"> 
+    <p>groundLevel:</p>
+    <p>{{groundLevel}}</p>
   </div>
 </section>

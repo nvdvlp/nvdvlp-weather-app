@@ -20,14 +20,23 @@ export class AppComponent implements OnInit {
   cityName: string = '';
   countryName: string ='';
   date: Date = new Date();
-  daysOfTheWeek:string[] = ['Sunday','Monday', 'Thuesday', 'Wednesday', 'Thursday', 'Friday'];
-  dayName:string = this.daysOfTheWeek[this.date.getDay()].toUpperCase();
-  hours:number = this.date.getHours();
-  minutes:number = this.date.getMinutes();
+  daysOfTheWeek: string[] = ['Sunday','Monday', 'Thuesday', 'Wednesday', 'Thursday', 'Friday'];
+  months: string[] = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  dayName: string = this.daysOfTheWeek[this.date.getDay()].toUpperCase();
+  stringMonth: string = this.months[this.date.getMonth()].toUpperCase(); 
+  hours: number = this.date.getHours();
+  minutes: number = this.date.getMinutes();
+  dayMonth: number = this.date.getDate();
+  year: number = this.date.getFullYear();
   zoneTime: string = '';
   degressCelsius: number = 0;
-  Floordegress: number = Math.floor(this.degressCelsius);
-
+  FloorDegress: number = 0;
+  humidity: number = 0;
+  windSpeed: number = 0;
+  pressure: number = 0;
+  visibility: number = 0;
+  seaLevel: number = 0;
+  groundLevel: number = 0;
   states = {
     Drizzle: false,
     Rain: false,
@@ -53,8 +62,15 @@ export class AppComponent implements OnInit {
         console.log(this.cityName = data.name);
         console.log(this.countryName = data.sys.country);
         console.log(this.dayName);
-        this.Floordegress = this.degressCelsius = data.main.temp
-        console.log( this.Floordegress);
+        this.degressCelsius = data.main.temp
+        this.FloorDegress = Math.floor(this.dayMonth);
+        this.humidity = data.main.humidity;
+        this.windSpeed = data.wind.speed;
+        this.pressure = data.main.pressure;
+        this.visibility = data.visibility;
+        this.seaLevel = data.main.sea_level;
+        this.groundLevel = data.main.grnd_level
+        console.log(this.year);
       },
       (error: any) => { 
         console.log('Error fetching weather data:', error);
