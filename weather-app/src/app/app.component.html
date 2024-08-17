@@ -1,49 +1,53 @@
-<h2>WEATHER APP</h2>
+<h2 class="weatherAppTitle">WEATHER APP</h2>
 
 <section>
   <div class="inputCity">
-    <input type="text" name="findCity">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <input type="text" name="findCity" placeholder="Select your city..." id="findCity">
   </div>
 
-  <h2>Current Location:</h2>
-  <p>{{cityName}}, {{countryName}}</p>
+  <h2 class="midTitle">Current Location:</h2>
+  <p class="cityInfo">{{cityName}}, {{countryName}}</p>
 
   <div class="cityCard">
-    <i class="fa-solid fa-droplet" *ngIf="states.Drizzle"></i>
-    <i class="fa-solid fa-cloud-rain" *ngIf="states.Rain"></i>
-    <i class="fa-solid fa-cloud-bolt" *ngIf="states.Thunderstorm"></i> 
-    <i class="fa-solid fa-snowflake"  *ngIf="states.Snow"></i>
-    <i class="fa-solid fa-smog"*ngIf="states.Atmosphere"></i>
-    <i class="fa-solid fa-sun" *ngIf="states.Clear"></i>
-    <i class="fa-solid fa-cloud" *ngIf="states.Clouds"></i>
-    <p>{{dayName}}, {{hours}}:{{minutes}} {{zoneTime}}</p>
-    <p>{{FloorDegress}} °C</p>
+    <i class="fa-solid fa-droplet weatherIcons" *ngIf="states.Drizzle"></i>
+    <i class="fa-solid fa-cloud-rain weatherIcons" *ngIf="states.Rain"></i>
+    <i class="fa-solid fa-cloud-bolt weatherIcons" *ngIf="states.Thunderstorm"></i> 
+    <i class="fa-solid fa-snowflake weatherIcons"  *ngIf="states.Snow"></i>
+    <i class="fa-solid fa-smog weatherIcons"*ngIf="states.Atmosphere"></i>
+    <i class="fa-solid fa-sun weatherIcons" *ngIf="states.Clear"></i>
+    <i class="fa-solid fa-cloud weatherIcons" *ngIf="states.Clouds"></i>
+    <p class="cityCard__dayTime">{{dayName}}, {{hours}}:{{minutes}} {{zoneTime}}</p>
+    <p class="cityCard__degress">{{FloorDegress}} °C</p>
   </div>
-  <p>{{dayMonth}} {{stringMonth}}, {{year}}</p>
+  <p class="cityInfo a">{{dayMonth}} {{stringMonth}}, {{year}}</p>
 
+  <p class="midTitle">Today’s Higlights:</p>
+
+<section class="ParameterContainer">
   <div class="cardParameter">
-    <p>humidity:</p>
-    <p>{{humidity}}</p>
+    <p class="midTitle">humidity:</p>
+    <p class="cityInfo">{{humidity}}</p>
   </div>
   <div class="cardParameter">
-    <p>Wind Speed:</p>
-    <p>{{windSpeed}}</p>
+    <p class="midTitle">Wind Speed:</p>
+    <p class="cityInfo">{{windSpeed}}</p>
   </div>
   <div class="cardParameter">
-    <p>Pressure:</p>
-    <p>{{pressure}}</p>
+    <p class="midTitle">Pressure:</p>
+    <p class="cityInfo">{{pressure}}</p>
   </div>
   <div class="cardParameter">
-    <p>visibility:</p>
-    <p>{{visibility}}</p>
+    <p class="midTitle">visibility:</p>
+    <p class="cityInfo">{{visibility}}</p>
   </div>
   <div class="cardParameter">
-    <p>sea level:</p>
-    <p>{{seaLevel}}</p>
+    <p class="midTitle">sea level:</p>
+    <p class="cityInfo">{{seaLevel}}</p>
   </div>
   <div class="cardParameter"> 
-    <p>groundLevel:</p>
-    <p>{{groundLevel}}</p>
+    <p class="midTitle">groundLevel:</p>
+    <p class="cityInfo">{{groundLevel}}</p>
   </div>
+</section>
+
 </section>

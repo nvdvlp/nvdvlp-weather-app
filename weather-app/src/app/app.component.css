@@ -2,3 +2,92 @@
 .fa-droplet{
     font-size: 30px;
 }
+
+:host{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.weatherAppTitle{
+    font-size:32px;
+    font-weight:600;
+    margin-block:40px;
+    color: #3F3F3F;
+}
+
+#findCity{
+    width:249px;
+    height:35px;
+    border: 1px solid #AFAFAF;
+    color: #AFAFAF;
+}
+
+.midTitle{
+    font-size:15px;
+    font-weight:600;
+    margin-block:5px;
+    color: #686868;
+}
+
+.cityInfo{
+    font-size:15px;
+    font-weight:600;
+    margin-block:5px;
+    color: #3F3F3F;
+}
+
+.a{
+    text-align: end;
+}
+
+.cityCard{
+    width:250px;
+    height:221px;
+    border-radius:6px;
+    background-image: url('https://www.shutterstock.com/image-photo/new-york-city-skyline-skyscraper-600nw-2314621193.jpg');
+}
+
+.cityCard__dayTime{
+    font-size:15px;
+    font-weight:500;
+    margin-block:5px;
+    color: #fff;
+    padding-left: 8px;
+}
+
+.cityCard__degress{
+    font-size:36px;
+    font-weight:600;
+    margin-block:5px;
+    color: #FFF;
+    padding-left: 8px;
+}
+
+.weatherIcons{
+    color: #fff;
+    font-size:35px;
+    padding-left: 8px;
+    margin-top:10px;
+}
+
+.ParameterContainer{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    grid-template-rows:repeat(2, auto);
+    gap:10px;
+}
+
+.cardParameter{
+    width: 120px;
+    height:100px;
+    border-radius:6px;
+    border: 1px solid #D9D9D9;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

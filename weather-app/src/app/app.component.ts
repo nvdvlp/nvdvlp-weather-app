@@ -20,10 +20,10 @@ export class AppComponent implements OnInit {
   cityName: string = '';
   countryName: string ='';
   date: Date = new Date();
-  daysOfTheWeek: string[] = ['Sunday','Monday', 'Thuesday', 'Wednesday', 'Thursday', 'Friday'];
+  daysOfTheWeek: string[] = ['Monday', 'Thuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
   months: string[] = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-  dayName: string = this.daysOfTheWeek[this.date.getDay()].toUpperCase();
-  stringMonth: string = this.months[this.date.getMonth()].toUpperCase(); 
+  dayName: string = this.daysOfTheWeek[this.date.getDay()]
+  stringMonth: string = this.months[this.date.getMonth()]
   hours: number = this.date.getHours();
   minutes: number = this.date.getMinutes();
   dayMonth: number = this.date.getDate();
@@ -53,29 +53,49 @@ export class AppComponent implements OnInit {
     this.weatherService.getWeather().subscribe(
       (data) => {
         this.weatherData = data;
-        console.log(this.weatherData = data);
-        this.idWeather = data.weather[0].id;
-        this.updateStates();
+        this.setZoneTime();
         this.cityName = data.name;
         this.countryName = data.sys.country;
-        this.setZoneTime();
-        console.log(this.cityName = data.name);
-        console.log(this.countryName = data.sys.country);
-        console.log(this.dayName);
-        this.degressCelsius = data.main.temp
+        this.idWeather = data.weather[0].id;
+        this.degressCelsius = data.main.temp;
         this.FloorDegress = Math.floor(this.dayMonth);
         this.humidity = data.main.humidity;
         this.windSpeed = data.wind.speed;
         this.pressure = data.main.pressure;
         this.visibility = data.visibility;
         this.seaLevel = data.main.sea_level;
-        this.groundLevel = data.main.grnd_level
-        console.log(this.year);
+        this.groundLevel = data.main.grnd_level;
+        this.updateStates();
+        console.log(this.weatherData = data);
+        console.log(this.cityName = data.name);
+        console.log(this.countryName = data.sys.country);
+        console.log(this.idWeather = data.weather[0].id);
+        console.log(this.degressCelsius = data.main.temp);
+        console.log(this.FloorDegress = Math.floor(this.dayMonth));
+        console.log(this.humidity = data.main.humidity);
+        console.log(this.windSpeed = data.wind.speed);
+        console.log(this.dayName);
+        
       },
       (error: any) => { 
         console.log('Error fetching weather data:', error);
       }
     );
+
+    const cityData ={
+      cityName: this.cityName,
+      imageUrl: `https://example.com/images/${this.cityName}.jpg` 
+    } 
+
+    // this.weatherService.cityWeather(cityData).subscribe(
+    //   (data) => {
+    //     console.log("response", data);
+        
+    //   },
+    //   (error: any) => { 
+    //     console.log('Error fetching weather data:', error);
+    //   }
+    // )
   }
   
   updateStates(): void {
@@ -100,7 +120,7 @@ export class AppComponent implements OnInit {
     if (this.idWeather == 800 ) {
       this.states.Clear = true;
     }
-    if (this.idWeather >= 801 && this.idWeather < 804) {
+    if (this.idWeather >= 801 && this.idWeather < 805) {
       this.states.Clouds = true;
     }
   }
@@ -111,7 +131,6 @@ export class AppComponent implements OnInit {
     }else{
       this.zoneTime = 'PM'
     }
-    
   }
   
 }
