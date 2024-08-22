@@ -15,12 +15,14 @@ import { HttpClientModule } from '@angular/common/http';
 })
 
 export class AppComponent implements OnInit {
+  //api data array
   weatherData: any;
+
   idWeather: number = 0;
-  cityName: string = '';
+  cityName: string = 'Bogota';
   countryName: string ='';
   date: Date = new Date();
-  daysOfTheWeek: string[] = ['Monday', 'Thuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+  daysOfTheWeek: string[] = ['Sunday', 'Monday', 'Thuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
   months: string[] = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
   dayName: string = this.daysOfTheWeek[this.date.getDay()]
   stringMonth: string = this.months[this.date.getMonth()]
@@ -37,6 +39,9 @@ export class AppComponent implements OnInit {
   visibility: number = 0;
   seaLevel: number = 0;
   groundLevel: number = 0;
+  searhValue: string = '';
+  noCity: boolean = false;
+  showWeather:boolean = false;
   states = {
     Drizzle: false,
     Rain: false,
@@ -44,11 +49,10 @@ export class AppComponent implements OnInit {
     Snow: false,
     Atmosphere: false,
     Clouds: false,
-    Clear:false
+    Sunny:false
   };
   
   constructor(private weatherService: WeatherService) {}
-  
   ngOnInit(): void {
     this.weatherService.getWeather().subscribe(
       (data) => {
@@ -67,14 +71,6 @@ export class AppComponent implements OnInit {
         this.groundLevel = data.main.grnd_level;
         this.updateStates();
         console.log(this.weatherData = data);
-        console.log(this.cityName = data.name);
-        console.log(this.countryName = data.sys.country);
-        console.log(this.idWeather = data.weather[0].id);
-        console.log(this.degressCelsius = data.main.temp);
-        console.log(this.FloorDegress = Math.floor(this.dayMonth));
-        console.log(this.humidity = data.main.humidity);
-        console.log(this.windSpeed = data.wind.speed);
-        console.log(this.dayName);
         
       },
       (error: any) => { 
@@ -82,10 +78,10 @@ export class AppComponent implements OnInit {
       }
     );
 
-    const cityData ={
-      cityName: this.cityName,
-      imageUrl: `https://example.com/images/${this.cityName}.jpg` 
-    } 
+    // const cityData ={
+    //   cityName: this.cityName,
+    //   imageUrl: `https://example.com/images/${this.cityName}.jpg` 
+    // } 
 
     // this.weatherService.cityWeather(cityData).subscribe(
     //   (data) => {
@@ -97,7 +93,62 @@ export class AppComponent implements OnInit {
     //   }
     // )
   }
-  
+
+  searchCity(){
+      if(this.searhValue === ''){
+          this.noCity = true;
+      }else{
+        this.noCity = false;
+        this.cityName = this.searhValue; 
+        this.weatherService.getWeather().subscribe(
+          (data) => {
+            this.weatherData = data;
+            this.setZoneTime();
+            this.cityName = data.name;
+            this.countryName = data.sys.country;
+            this.idWeather = data.weather[0].id;
+            this.degressCelsius = data.main.temp;
+            this.FloorDegress = Math.floor(this.dayMonth);
+            this.humidity = data.main.humidity;
+            this.windSpeed = data.wind.speed;
+            this.pressure = data.main.pressure;
+            this.visibility = data.visibility;
+            this.seaLevel = data.main.sea_level;
+            this.groundLevel = data.main.grnd_level;
+            this.updateStates();
+            console.log(this.weatherData = data);
+            // this.cityName = data.name.filter(this.cityName => 
+            //   this.cityName.includes(this.searhValue));    
+          },
+          (error: any) => { 
+            console.log('Error searching the city:', error);
+          }
+        );
+      }
+  // Call the weather service to search for the city
+  // this.weatherService.getCityWeather(this.searhValue).subscribe(
+  //   (data: any) => {
+  //     // Assuming the API returns a list of cities, filter them by the search term
+  //     this.weatherData = data.filter((city: any) => 
+  //       city.name.toLowerCase().includes(this.searhValue.toLowerCase())
+  //     );
+  //     console.log(this.weatherData);
+  //   },
+  //   (error: any) => {
+  //     console.log('Error searching city:', error);
+  //   }
+  // );
+  // getWeather(): Observable<any> {
+  //   const url = `${this.apiUrl}?q=${this.cityName}&appid=${this.apiKey}&units=metric`;
+  //   return this.http.get<any>(url);
+  // }
+
+  // getCityWeather(cityName: string): Observable<any> {
+  //   const url = `${this.apiUrl}?q=${cityName}&appid=${this.apiKey}&units=metric`;
+  //   return this.http.get<any>(url);
+  // }
+  }
+
   updateStates(): void {
     if (this.idWeather >= 200 && this.idWeather < 232) {
       this.states.Thunderstorm = true;
@@ -118,7 +169,7 @@ export class AppComponent implements OnInit {
       this.states.Atmosphere = true;
     }
     if (this.idWeather == 800 ) {
-      this.states.Clear = true;
+      this.states.Sunny = true;
     }
     if (this.idWeather >= 801 && this.idWeather < 805) {
       this.states.Clouds = true;

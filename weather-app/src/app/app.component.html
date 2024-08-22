@@ -1,9 +1,97 @@
-<h2 class="weatherAppTitle">WEATHER APP</h2>
+<div class="logo">
+  <img class="logo__img" src="./../assets/img/logo.png" alt="">
+  <h2 class="logo__title">Weather <br> App</h2>
+</div>
 
-<section>
-  <div class="inputCity">
-    <input type="text" name="findCity" placeholder="Select your city..." id="findCity">
+<div class="search">
+  <input class="search__input" type="text" name="" id="" placeholder="Select any City...">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</div>
+
+<div class="noCity" *ngIf="noCity">
+  <i class="fa-solid fa-earth-americas"></i>
+  <h2 class="noCity__message">Please Select  a city</h2>
+</div>
+
+<div class="cardWeatherTime__actualTime"><h2 class="actualTime_hour">04:00</h2></div>
+<section class="cardWeatherTime">
+  <h2 class="cardWeatherTime__cityCountry">BOGOTÁ CO</h2>
+  <h2 class="cardWeatherTime__date">Monday  10 Agust 2024</h2>
+
+  <div class="cardWeatherTime__weatherContainer">
+    <i class="fa-solid fa-droplet states" *ngIf="states.Drizzle"></i>
+    <i class="fa-solid fa-cloud-rain states" *ngIf="states.Rain"></i>
+    <i class="fa-solid fa-cloud-bolt weatherIcons states" *ngIf="states.Thunderstorm"></i> 
+    <i class="fa-solid fa-snowflake weatherIcons states"  *ngIf="states.Snow"></i>
+    <i class="fa-solid fa-smog weatherIcons states"*ngIf="states.Atmosphere"></i>
+    <i class="fa-solid fa-sun weatherIcons states" *ngIf="states.Sunny"></i>
+    <i class="fa-solid fa-cloud weatherIcons states" *ngIf="states.Clouds"></i>
+    <div class="weatherContainer__cityWeather">
+      <h2 class="cityWeather__degress">25 °</h2>
+      <h2 class="cityWeather__nameState">Clear State</h2>
+    </div>
   </div>
+</section>
+
+<section class="cardCaracteristics">
+  <div class="cardCaracteristics__laterDaysCards">
+    <div class="cardCaracteristics__laterCard">
+      <h2 class="laterCard__hour">05:00</h2>
+      <!-- <i class="fa-solid fa-droplet" *ngIf="states.Drizzle"></i>
+      <i class="fa-solid fa-cloud-rain" *ngIf="states.Rain"></i>
+      <i class="fa-solid fa-cloud-bolt weatherIcons" *ngIf="states.Thunderstorm"></i> 
+      <i class="fa-solid fa-snowflake weatherIcons"  *ngIf="states.Snow"></i>
+      <i class="fa-solid fa-smog weatherIcons"*ngIf="states.Atmosphere"></i>
+      <i class="fa-solid fa-sun weatherIcons" *ngIf="states.Sunny"></i>
+      <i class="fa-solid fa-cloud weatherIcons" *ngIf="states.Clouds"></i> -->
+      <h2 class="laterCard__degress">40°</h2>
+    </div>
+
+      <div class="cardCaracteristics__behaviorsCard">
+        <div class="behaviorsCard__card">
+          <h2 class="card__name">Humidity:</h2>
+          <h2 class="card__data">0.4%</h2>
+        </div>  
+        <div class="behaviorsCard__card">
+          <h2 class="card__name">Humidity:</h2>
+          <h2 class="card__data">0.4%</h2>
+          
+        </div>      
+        <div class="behaviorsCard__card">
+          <h2 class="card__name">Humidity:</h2>
+          <h2 class="card__data">0.4%</h2>
+          
+        </div>      
+        <div class="behaviorsCard__card">
+          <h2 class="card__name">Humidity:</h2>
+          <h2 class="card__data">0.4%</h2>
+          
+        </div>      
+        <div class="behaviorsCard__card">
+          <h2 class="card__name">Humidity:</h2>
+          <h2 class="card__data">0.4%</h2>
+          
+        </div>      
+        <div class="behaviorsCard__card">
+          <h2 class="card__name">Humidity:</h2>
+          <h2 class="card__data">0.4%</h2>
+        </div>  
+    </div>
+  </div>
+</section>
+
+<!-- <h2 class="weatherAppTitle">WEATHER APP</h2>
+
+<div class="inputCity">
+  <input type="text" name="findCity" placeholder="Select your city..." id="findCity" [(ngModel)]="searhValue">
+  <i class="fa-solid fa-magnifying-glass" (click)="searchCity()"></i>
+</div>
+
+<div *ngIf="noCity">
+  <i class="fa-solid fa-meteor"></i>
+  <p>add a location</p>
+</div>
+<section *ngIf="!noCity">
 
   <h2 class="midTitle">Current Location:</h2>
   <p class="cityInfo">{{cityName}}, {{countryName}}</p>
@@ -45,9 +133,8 @@
     <p class="cityInfo">{{seaLevel}}</p>
   </div>
   <div class="cardParameter"> 
-    <p class="midTitle">groundLevel:</p>
+    <p class="midTitle">ground level:</p>
     <p class="cityInfo">{{groundLevel}}</p>
   </div>
 </section>
-
-</section>
+</section> -->
