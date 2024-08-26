@@ -12,6 +12,8 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    margin-top:31px;
+    margin-bottom: 20px;
 }
 
 .logo__img{
@@ -29,6 +31,7 @@
 .search {
     position: relative;
     display: inline-block;
+    margin-bottom: 20px;
 }
   
 .search__input {
@@ -59,6 +62,7 @@
 
 .noCity{
     width: 100%;
+    height: 600px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -104,6 +108,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-bottom:16px;
 }
 
 .cardWeatherTime__cityCountry{
@@ -176,6 +181,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-bottom: 16px;
 }
 
 .laterCard__hour{
