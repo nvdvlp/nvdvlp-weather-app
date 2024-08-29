@@ -5,11 +5,10 @@
 
 <div class="search">
   <input class="search__input" type="text" name="" id="" placeholder="Select any City..." [(ngModel)]="searchValue">
-  <i class="fa-solid fa-magnifying-glass" (click)="searchCity()" ></i>
+  <div class="search__iconContainer">
+    <i class="fa-solid fa-magnifying-glass" (click)="searchCity()" ></i>
+  </div>
 </div>
-
-
-<p (click)="searchCity()">aaaa</p>
 
 <div class="noCity" *ngIf="noCity">
   <i class="fa-solid fa-earth-americas"></i>
@@ -38,16 +37,43 @@
 
 <section class="cardCaracteristics" *ngIf="!noCity">
   <div class="cardCaracteristics__laterDaysCards">
-    <div class="cardCaracteristics__laterCard">
-      <h2 class="laterCard__hour">05:00</h2>
-      <!-- <i class="fa-solid fa-droplet" *ngIf="states.Drizzle"></i>
-      <i class="fa-solid fa-cloud-rain" *ngIf="states.Rain"></i>
-      <i class="fa-solid fa-cloud-bolt weatherIcons" *ngIf="states.Thunderstorm"></i> 
-      <i class="fa-solid fa-snowflake weatherIcons"  *ngIf="states.Snow"></i>
-      <i class="fa-solid fa-smog weatherIcons"*ngIf="states.Atmosphere"></i>
-      <i class="fa-solid fa-sun weatherIcons" *ngIf="states.Sunny"></i>
-      <i class="fa-solid fa-cloud weatherIcons" *ngIf="states.Clouds"></i> -->
-      <h2 class="laterCard__degress">40°</h2>
+
+    <div class="rowCards">
+      <div class="cardCaracteristics__laterCard">
+        <h2 class="laterCard__hour">{{threeH}}:{{minutes}}</h2>
+        <i class="fa-solid fa-droplet nextDays" *ngIf="states.Drizzle"></i>
+        <i class="fa-solid fa-cloud-rain nextDays" *ngIf="states.Rain"></i>
+        <i class="fa-solid fa-cloud-bolt weatherIcons nextDays" *ngIf="states.Thunderstorm"></i> 
+        <i class="fa-solid fa-snowflake weatherIcons nextDays"  *ngIf="states.Snow"></i>
+        <i class="fa-solid fa-smog weatherIcons nextDays"*ngIf="states.Atmosphere"></i>
+        <i class="fa-solid fa-sun weatherIcons nextDays" *ngIf="states.Sunny"></i>
+        <i class="fa-solid fa-cloud weatherIcons nextDays" *ngIf="states.Clouds"></i>
+        <h2 class="laterCard__degress">{{threeDegreess}} C°</h2>
+      </div>
+
+      <div class="cardCaracteristics__laterCard">
+        <h2 class="laterCard__hour">{{sixH}}:{{minutes}}</h2>
+        <i class="fa-solid fa-droplet nextDays" *ngIf="states.Drizzle"></i>
+        <i class="fa-solid fa-cloud-rain nextDays" *ngIf="states.Rain"></i>
+        <i class="fa-solid fa-cloud-bolt weatherIcons nextDays" *ngIf="states.Thunderstorm"></i> 
+        <i class="fa-solid fa-snowflake weatherIcons nextDays"  *ngIf="states.Snow"></i>
+        <i class="fa-solid fa-smog weatherIcons nextDays"*ngIf="states.Atmosphere"></i>
+        <i class="fa-solid fa-sun weatherIcons nextDays" *ngIf="states.Sunny"></i>
+        <i class="fa-solid fa-cloud weatherIcons nextDays" *ngIf="states.Clouds"></i>
+        <h2 class="laterCard__degress">{{sixDegreess}} C°</h2>
+      </div>
+
+      <div class="cardCaracteristics__laterCard">
+        <h2 class="laterCard__hour">{{nineH}}:{{minutes}}</h2>
+        <i class="fa-solid fa-droplet nextDays" *ngIf="states.Drizzle"></i>
+        <i class="fa-solid fa-cloud-rain nextDays" *ngIf="states.Rain"></i>
+        <i class="fa-solid fa-cloud-bolt weatherIcons nextDays" *ngIf="states.Thunderstorm"></i> 
+        <i class="fa-solid fa-snowflake weatherIcons nextDays"  *ngIf="states.Snow"></i>
+        <i class="fa-solid fa-smog weatherIcons nextDays"*ngIf="states.Atmosphere"></i>
+        <i class="fa-solid fa-sun weatherIcons nextDays" *ngIf="states.Sunny"></i>
+        <i class="fa-solid fa-cloud weatherIcons nextDays" *ngIf="states.Clouds"></i>
+        <h2 class="laterCard__degress">{{nineDegreess}} C°</h2>
+      </div>
     </div>
 
       <div class="cardCaracteristics__behaviorsCard">
@@ -82,62 +108,3 @@
     </div>
   </div>
 </section>
-
-<!-- <h2 class="weatherAppTitle">WEATHER APP</h2>
-
-<div class="inputCity">
-  <input type="text" name="findCity" placeholder="Select your city..." id="findCity" [(ngModel)]="searhValue">
-  <i class="fa-solid fa-magnifying-glass" (click)="searchCity()"></i>
-</div>
-
-<div *ngIf="noCity">
-  <i class="fa-solid fa-meteor"></i>
-  <p>add a location</p>
-</div>
-<section *ngIf="!noCity">
-
-  <h2 class="midTitle">Current Location:</h2>
-  <p class="cityInfo">{{cityName}}, {{countryName}}</p>
-
-  <div class="cityCard">
-    <i class="fa-solid fa-droplet weatherIcons" *ngIf="states.Drizzle"></i>
-    <i class="fa-solid fa-cloud-rain weatherIcons" *ngIf="states.Rain"></i>
-    <i class="fa-solid fa-cloud-bolt weatherIcons" *ngIf="states.Thunderstorm"></i> 
-    <i class="fa-solid fa-snowflake weatherIcons"  *ngIf="states.Snow"></i>
-    <i class="fa-solid fa-smog weatherIcons"*ngIf="states.Atmosphere"></i>
-    <i class="fa-solid fa-sun weatherIcons" *ngIf="states.Clear"></i>
-    <i class="fa-solid fa-cloud weatherIcons" *ngIf="states.Clouds"></i>
-    <p class="cityCard__dayTime">{{dayName}}, {{hours}}:{{minutes}} {{zoneTime}}</p>
-    <p class="cityCard__degress">{{FloorDegress}} °C</p>
-  </div>
-  <p class="cityInfo a">{{dayMonth}} {{stringMonth}}, {{year}}</p>
-
-  <p class="midTitle">Today’s Higlights:</p>
-
-<section class="ParameterContainer">
-  <div class="cardParameter">
-    <p class="midTitle">humidity:</p>
-    <p class="cityInfo">{{humidity}}</p>
-  </div>
-  <div class="cardParameter">
-    <p class="midTitle">Wind Speed:</p>
-    <p class="cityInfo">{{windSpeed}}</p>
-  </div>
-  <div class="cardParameter">
-    <p class="midTitle">Pressure:</p>
-    <p class="cityInfo">{{pressure}}</p>
-  </div>
-  <div class="cardParameter">
-    <p class="midTitle">visibility:</p>
-    <p class="cityInfo">{{visibility}}</p>
-  </div>
-  <div class="cardParameter">
-    <p class="midTitle">sea level:</p>
-    <p class="cityInfo">{{seaLevel}}</p>
-  </div>
-  <div class="cardParameter"> 
-    <p class="midTitle">ground level:</p>
-    <p class="cityInfo">{{groundLevel}}</p>
-  </div>
-</section>
-</section> -->

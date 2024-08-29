@@ -6,14 +6,15 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class WeatherService {
-  // http://api.openweathermap.org/geo/1.0/direct?q={cityName},{countryName}&appid=14f1488c19996272466d2776e8c52221&units=metric
-
   constructor(private http: HttpClient) {}
 
-  getWeather(cityName :string): Observable<any> {
+  getWeather(cityName: string): Observable<any> {
     const mainUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=14f1488c19996272466d2776e8c52221&units=metric`;
     return this.http.get<any>(mainUrl);
   }
 
-
+  getForecastWeather(cityName: string): Observable<any>{
+    const forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=14f1488c19996272466d2776e8c52221&units=metric`;
+    return this.http.get<any>(forecastUrl);
+  }
 }

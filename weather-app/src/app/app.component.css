@@ -29,19 +29,34 @@
 }
 
 .search {
-    position: relative;
-    display: inline-block;
+    display: flex;
+    flex-direction: row;
     margin-bottom: 20px;
 }
   
 .search__input {
-    width: 249px;
+    width: 216px;
     height: 35px;
-    border-radius: 9px;
+    border-top-left-radius: 9px;
+    border-bottom-left-radius: 9px;
     border: 1px solid #D4D4D4;
+    border-right: none;
     background-color: #fff;
     padding-right: 30px;
     box-sizing: border-box;
+}
+
+.search__iconContainer{
+    width: 32px;
+    height: 33px;
+    display: flex;
+    border: 1px solid #D4D4D4;
+    border-left: none;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    border-top-right-radius: 9px;
+    border-bottom-right-radius: 9px;
 }
 
 .search__input ::placeholder{
@@ -51,13 +66,13 @@
 }
   
 .fa-magnifying-glass {
-    position: absolute;
+    /* position: absolute;
     right: 10px; 
     top: 50%;
-    transform: translateY(-50%);
+    transform: translateY(-50%); */
+    /* pointer-events: none;  */
     color: #687682;
     font-size: 16px;
-    pointer-events: none; 
 }
 
 .noCity{
@@ -211,15 +226,31 @@
     border: 1px solid #D4EAFF;
     display: flex;
     flex-direction: column;
+    justify-content: center
 }
 
 .card__name{
     font-size:10px;
     font-weight:600;
     color:#fff;
+    padding-left: 10px;
 }
 .card__data{
-    font-size:10px;
-    font-weight:600;
-    color:#DEF2FF;
+    font-size: 10px;
+    font-weight: 600;
+    color: #DEF2FF;
+    text-align: end;
+    padding-right: 10px;
+}
+
+.nextDays{
+    color: #E8E8E8;
+}
+
+.rowCards{
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    align-content: flex-start;
+    justify-content: space-evenly;
 }
